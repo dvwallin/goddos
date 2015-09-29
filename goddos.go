@@ -8,7 +8,7 @@ import (
 )
 
 var (
-	uriFragments map[uint8]string
+	uriFragments map[string]bool
 )
 
 func init() {
