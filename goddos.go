@@ -52,6 +52,7 @@ func main() {
 
 func CheckForDdosString(w traffic.ResponseWriter, r *traffic.Request) {
 	for k, _ := range uriFragments {
+		fmt.Printf("Searching for %s in %s", k, r.RequestURI)
 		if strings.Contains(r.RequestURI, k) {
 			fmt.Printf("Found %s", k)
 			w.WriteHeader(http.StatusGatewayTimeout)
