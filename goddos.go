@@ -1,6 +1,7 @@
 package goddos
 
 import (
+	"fmt"
 	"net/http"
 	"strings"
 
@@ -52,6 +53,7 @@ func main() {
 func CheckForDdosString(w traffic.ResponseWriter, r *traffic.Request) {
 	for k, _ := range uriFragments {
 		if strings.Contains(r.RequestURI, k) {
+			fmt.Printf("Found %s", k)
 			w.WriteHeader(http.StatusGatewayTimeout)
 			w.WriteText("connection timed out")
 		}
