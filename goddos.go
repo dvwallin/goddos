@@ -51,7 +51,7 @@ func main() {
 
 func CheckForDdosString(w traffic.ResponseWriter, r *traffic.Request) {
 	for k, _ := range uriFragments {
-		if strings.Contains(k, r.RequestURI) {
+		if strings.Contains(r.RequestURI, k) {
 			w.WriteHeader(http.StatusGatewayTimeout)
 			w.WriteText("connection timed out")
 		}
